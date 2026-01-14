@@ -1,0 +1,53 @@
+<div class="heroes-bg">
+  <div class="heroes-content">
+    <button class="btn btn-home" routerLink="/home">
+      Home
+    </button>
+    <h1>Elegí tu héroe</h1>
+    <p class="subtitle">Hacé click en una tarjeta</p>
+
+    <div class="grid">
+      <button
+        class="card"
+        *ngFor="let hero of filteredHeroes"
+
+      
+        (click)="selectHero(hero)"
+        [class.selected]="selectedHero?.id === hero.id"
+        [class.venom-block]="hero.name === 'Venom'"
+        >
+        <div class="name">{{ hero.name }}</div>
+      </button>
+      
+
+    </div>
+    <div class="selected" *ngIf="selectedHero">
+      <h2>Seleccionado:</h2>
+      <div class="selected-row">
+ <img [src]="selectedHero.imageUrl" [alt]="selectedHero.name" />
+
+  <!-- Panel derecho -->
+  <div class="selected-info">
+    <div class="selected-name">{{ selectedHero.name }}</div>
+
+    <!-- 🔥 PODERES -->
+    <div class="powers" *ngIf="selectedHeroPowers.length">
+      <h3>Técnicas</h3>
+
+      <ul>
+        <li *ngFor="let power of selectedHeroPowers">
+          {{ power.name }}
+        </li>
+      </ul>
+    </div>
+
+    <button class="btn" [routerLink]="['/heroes', selectedHero.key, 'powers']">
+      Historia
+    </button>
+
+    <button class="btn" (click)="clearSelection()">Atrás</button>
+  </div>
+</div>
+    </div>
+  </div>
+</div>

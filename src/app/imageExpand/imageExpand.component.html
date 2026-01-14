@@ -1,0 +1,9 @@
+<ng-container *ngIf="(state$ | async) as s">
+  <div *ngIf="s.open" class="backdrop" (click)="close()">
+    <div class="panel" (click)="$event.stopPropagation()">
+      <button class="btn-close" (click)="close()">✕</button>
+      <img class="img" [src]="s.src" [alt]="s.alt || 'Imagen ampliada'">
+      <div class="hint">ESC para cerrar • Click afuera para cerrar</div>
+    </div>
+  </div>
+</ng-container>

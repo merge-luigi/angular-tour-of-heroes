@@ -1,0 +1,317 @@
+/* ======================================================
+   STORY – CONTENIDO
+   ====================================================== */
+
+.story {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.story-hero {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.story-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.story-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: rgba(120, 220, 255, 0.95);
+}
+
+.story-tagline {
+  margin: 6px 0 0;
+  font-size: 13px;
+  opacity: 0.85;
+  color: rgba(180, 235, 255, 0.85);
+}
+
+.story-image {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid rgba(90, 210, 255, 0.25);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+}
+
+.story-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.story-paragraph {
+  margin: 0;
+  line-height: 1.55;
+  font-size: 14px;
+  color: rgba(180, 235, 255, 0.9);
+}
+
+.story-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.story-section {
+  border: 1px solid rgba(90, 210, 255, 0.18);
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 18px;
+  padding: 12px 14px;
+}
+
+.section-title {
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  color: rgba(120, 220, 255, 0.95);
+}
+
+.section-content {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(180, 235, 255, 0.88);
+}
+
+/* ======================================================
+   STORY PAGE – BASE
+   ====================================================== */
+
+.story-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px;
+  background: linear-gradient(180deg, #06111b, #02050a);
+}
+
+/* ======================================================
+   PANEL
+   ====================================================== */
+
+.panel {
+  width: 420px;
+  max-width: 100%;
+  padding: 22px 20px 26px;
+  border-radius: 18px;
+  background: rgba(5, 14, 22, 0.85);
+  border: 1px solid rgba(90, 210, 255, 0.35);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75);
+  position: relative;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  inset: -30px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(80, 220, 255, 0.15) 0%,
+    rgba(80, 220, 255, 0.08) 40%,
+    transparent 70%
+  );
+  filter: blur(20px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.panel-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 14px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(90, 210, 255, 0.25);
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffb14b;
+}
+
+.corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid rgba(90, 210, 255, 0.65);
+  top: 2px;
+}
+
+.corner-left {
+  left: 2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.corner-right {
+  right: 2px;
+  border-left: none;
+  border-bottom: none;
+}
+
+/* ======================================================
+   NAV – BASE (GENÉRICO)
+   ====================================================== */
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.nav-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(120, 200, 255, 0.35);
+
+  color: rgba(200, 235, 255, 0.95);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    transform 80ms ease;
+}
+
+.nav-btn:hover {
+  background: rgba(40, 80, 110, 0.35);
+  border-color: rgba(120, 220, 255, 0.65);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  transform: translateY(-1px);
+}
+
+.nav-btn:active {
+  transform: translateY(1px);
+}
+
+/* ======================================================
+   CARNAGE THEME (EXCLUSIVO)
+   ====================================================== */
+
+.story-page.theme-carnage {
+  background:
+    radial-gradient(circle at 30% 25%, rgba(120, 0, 0, 0.45), transparent 45%),
+    radial-gradient(circle at 70% 60%, rgba(255, 40, 40, 0.25), transparent 55%),
+    linear-gradient(180deg, #1a0505 0%, #050000 100%);
+  animation: carnagePulse 6s ease-in-out infinite;
+}
+
+.story-page.theme-carnage::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('/assets/carnage fondo.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  opacity: 0.55;
+  mix-blend-mode: overlay;
+  filter: grayscale(100%) contrast(1.8) brightness(0.9);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes carnageBreath {
+  0%   { box-shadow: 0 0 0 rgba(102, 36, 36, 0); }
+  50%  { box-shadow: 0 0 24px rgba(255, 34, 34, 0.35); }
+  100% { box-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+.story-page.theme-carnage .panel {
+  animation: carnageBreath 3s ease-in-out infinite;
+}
+
+.story-page.theme-carnage .panel::before {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 60, 60, 0.14) 0%,
+    rgba(255, 60, 60, 0.07) 40%,
+    transparent 70%
+  );
+}
+
+.story-page.theme-carnage .panel-header {
+  border-bottom-color: rgba(255, 60, 60, 0.35);
+}
+
+.story-page.theme-carnage .corner {
+  border-color: rgba(255, 60, 60, 0.55);
+}
+
+/* Texto Carnage */
+.story-page.theme-carnage .story-name,
+.story-page.theme-carnage .section-title {
+  color: rgba(255, 190, 190, 0.95);
+}
+
+.story-page.theme-carnage .story-tagline,
+.story-page.theme-carnage .section-content,
+.story-page.theme-carnage .story-paragraph {
+  color: rgba(255, 210, 210, 0.9);
+}
+
+/* Imagen */
+.story-page.theme-carnage .story-image {
+  border-color: rgba(255, 60, 60, 0.35);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.45), 0 0 16px rgba(255,60,60,0.25);
+}
+
+/* NAV – CARNAGE (ROJO OSCURO) */
+.story-page.theme-carnage .nav-btn {
+  border-color: rgba(160, 40, 40, 0.85);
+  background: linear-gradient(
+    180deg,
+    rgba(90, 15, 15, 0.9),
+    rgba(35, 5, 5, 0.96)
+  );
+  color: rgba(255, 215, 215, 0.95);
+}
+
+.story-page.theme-carnage .nav-btn:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(140, 30, 30, 0.95),
+    rgba(70, 10, 10, 0.98)
+  );
+  border-color: rgba(220, 80, 80, 0.95);
+  box-shadow:
+    0 0 0 1px rgba(220, 80, 80, 0.25),
+    0 10px 26px rgba(0, 0, 0, 0.6);
+}
+
+.story-image{
+  cursor: zoom-in;
+}
+.story-image:hover{
+  filter: brightness(1.05);
+}

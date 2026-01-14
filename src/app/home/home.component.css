@@ -1,0 +1,253 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Ion header look similar a tu top bar */
+.top-bar ion-toolbar {
+  --background: #111;
+  --color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Los ion-button del menú */
+.menu ion-button {
+  --color: #fff;
+  font-size: 13px;
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 60px 80px;
+
+  background-image: url("/assets/NighCity.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: white;
+  min-height: calc(100vh - 56px);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.hero-text,
+.hero-image {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero-text h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 18px;
+  margin-bottom: 22px;
+  color: #ccc;
+}
+
+/* Contenedor de botones CTA */
+.cta-row {
+  display: grid;
+  gap: 10px;
+  width: 260px;
+  margin-bottom: 14px;
+}
+
+/* Botón principal (ion-button) */
+ion-button.cta {
+  --background: #76b900;
+  --color: #000;
+  font-weight: 800;
+}
+
+/* Secundario */
+ion-button.btn-secondary {
+  --border-color: rgba(118, 185, 0, 0.65);
+  --color: #cfff9b;
+}
+
+/* Search */
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.search-box {
+  position: relative;
+  width: 220px;
+}
+
+/* Ion input custom */
+.search-input {
+  --background: rgba(0, 0, 0, 0.65);
+  --color: #f0f0f0;
+  --placeholder-color: rgba(255, 255, 255, 0.45);
+  --padding-start: 10px;
+  --padding-end: 10px;
+
+  border: 1px solid rgba(100, 255, 0, 0.35);
+  border-radius: 6px;
+}
+
+/* Botón Ir */
+ion-button.btn-search {
+  height: 38px;
+}
+
+/* Dropdown */
+.autocompleteList {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+
+  padding: 8px 0;
+  background: rgba(10, 10, 10, 0.92);
+  border: 1px solid rgba(0, 255, 120, 0.35);
+  border-radius: 10px;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.6),
+    0 0 18px rgba(0, 255, 120, 0.12);
+
+  list-style: none;
+  z-index: 50;
+}
+
+.autocompleteList li {
+  position: relative;
+  padding: 10px 14px 10px 26px;
+
+  color: #eaeaea;
+  cursor: pointer;
+  user-select: none;
+
+  transition: background 0.2s ease, transform 0.15s ease, color 0.2s ease;
+}
+
+.autocompleteList li::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  width: 6px;
+  height: 60%;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 255, 120, 0.95),
+    transparent
+  );
+
+  transform: translateY(-50%) scaleY(0);
+  opacity: 0;
+  border-radius: 999px;
+
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.autocompleteList li:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 255, 120, 0.22),
+    rgba(0, 255, 120, 0.04)
+  );
+  color: #b9ffd8;
+  transform: translateX(4px);
+}
+
+.autocompleteList li:hover::before {
+  transform: translateY(-50%) scaleY(1);
+  opacity: 1;
+}
+
+/* Imagen */
+.hero-image {
+  width: 38%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  max-height: 70vh;
+  max-width: 690px;
+  width: 70%;
+  height: auto;
+}
+
+/* ✅ Mobile: apilar, padding menor, botones full */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 18px;
+    gap: 18px;
+  }
+
+  .hero-text {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: 30px;
+  }
+
+  .cta-row {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .search-row {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .hero-image {
+    width: 100%;
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 520px;
+    max-height: 40vh;
+  }
+}

@@ -1,0 +1,210 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.heroes-bg {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+
+  /* 1) NYC (ATRÁS)  2) GIF (ADELANTE) */
+  background-image:
+    url("/assets/NYC pixelart.jpg")/*,
+    url("/assets/HeroSelecction.gif")*/;
+
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, center;
+
+  /* NYC llena / GIF se ve completo */
+  background-size: cover, contain;
+}
+
+/* overlay oscuro arriba de TODO background */
+.heroes-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+
+.heroes-content {
+  position: relative;
+  z-index: 1;
+  padding: 32px;
+  padding-top: 72px;
+  color: #e6d3a2;
+}
+
+.selected {
+  margin-top: 16px;
+}
+
+.selected-row > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+/* ✅ acá está la clave: limitar tamaño */
+.selected-row img {
+  width: 600px;          
+  height: 600px;
+  object-fit: cover;     
+  border-radius: 10px;
+  border: 2px solid rgba(230, 211, 162, 0.25);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+.btn {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: 1px solid rgba(230, 211, 162, 0.35);
+  background: rgba(0,0,0,0.25);
+  color: #e6d3a2;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: rgba(0,0,0,0.4);
+}
+
+/* ====== Texto general ====== */
+h1 {
+  margin: 12px 0 6px;
+  font-size: 42px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+
+.subtitle {
+  margin: 0 0 16px;
+  color: rgba(230, 211, 162, 0.85);
+}
+
+/* ====== Botón HOME (posición fija y prolijo) ====== */
+.btn-home {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  margin-top: 0; /* pisa el margin-top del .btn */
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.35);
+}
+
+/* ====== GRID de héroes ====== */
+.grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  margin-bottom: 18px;
+}
+
+/* ====== Tarjeta (card) ====== */
+.card {
+  /* reset look “windows” */
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid rgba(230, 211, 162, 0.25);
+  background: rgba(0,0,0,0.35);
+  color: #e6d3a2;
+
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  background: rgba(0,0,0,0.55);
+  border-color: rgba(230, 211, 162, 0.45);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+/* Estado seleccionado */
+.card.selected {
+  border-color: rgba(230, 162, 162, 0.75);
+  box-shadow: 0 0 0 2px rgba(230, 162, 162, 0.18), 0 12px 30px rgba(0,0,0,0.35);
+}
+
+/* Nombre dentro de la tarjeta */
+.name {
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+/* ====== Panel de seleccionado ====== */
+.selected {
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(230, 211, 162, 0.22);
+  backdrop-filter: blur(4px);
+}
+
+.selected h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: rgba(242, 230, 200, 0.95);
+}
+
+.selected-name {
+  margin-top: 6px;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+.selected-row {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.selected-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 320px;
+}
+
+.powers {
+  margin-top: 8px;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(230, 211, 162, 0.25);
+}
+
+.powers h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: rgba(242, 230, 200, 0.95);
+}
+
+.powers ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.powers li {
+  padding: 6px 8px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(230, 211, 162, 0.15);
+  font-size: 13px;
+}

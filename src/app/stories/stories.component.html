@@ -1,0 +1,52 @@
+<div class="story-page" [ngClass]="'theme-' + heroKey">
+  <div class="panel">
+
+    <div class="panel-header">
+      <h1 class="title">{{ title }}</h1>
+      <div class="corner corner-left"></div>
+      <div class="corner corner-right"></div>
+    </div>
+
+    <!-- HISTORIA -->
+    <div class="story">
+      <div class="story-hero">
+        <div class="story-text">
+          <h2 class="story-name">{{ heroDisplayName }}</h2>
+          <p class="story-tagline">{{ tagline }}</p>
+        </div>
+
+        <!-- opcional: imagen -->
+    <img
+      *ngIf="heroImageUrl"
+      class="story-image"
+      [src]="heroImageUrl"
+      [alt]="heroDisplayName"
+      (click)="zoomImage()"
+      tabindex="0"
+      (keydown.enter)="zoomImage()"
+      (keydown.space)="zoomImage()"
+    />
+      </div>
+
+      <div class="story-body">
+        <p *ngFor="let p of paragraphs" class="story-paragraph">
+          {{ p }}
+        </p>
+      </div>
+
+      <div class="story-sections" *ngIf="sections?.length">
+        <div class="story-section" *ngFor="let s of sections">
+          <div class="section-title">{{ s.title }}</div>
+          <div class="section-content">{{ s.content }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="nav-bar">
+      <button class="nav-btn back" (click)="goBack()">Volver</button>
+      <button class="nav-btn home" routerLink="/">Home</button>
+    </div>
+
+  </div>
+</div>
