@@ -12,6 +12,7 @@ export class HeroesList {
     { id: 3, key: 'carnage', name: 'Carnage', imageUrl: 'assets/carnage.gif' },
     { id: 4, key: 'dante', name: 'Dante', imageUrl: 'assets/Dante.png' },
     { id: 5, key: 'miles', name: 'Miles', imageUrl: 'assets/miles.gif' },
+    { id: 6, key: 'peter', name: 'Peter B. Parker.', imageUrl: 'assets/best peter.jpg' }
   ];
 
   getHeroes(): Hero[] {

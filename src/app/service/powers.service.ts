@@ -35,6 +35,7 @@ export class HeroPowersService {
       { id: 1, name: 'Sentido Arácnido' },
       { id: 2, name: 'Telaraña' },
     ],
+      peter: []
   };
   
   getTechniquesByHeroKey(heroKey: HeroKey): Technique[] 
