@@ -33,9 +33,13 @@ export class HeroPowersService {
     ],
     miles: [
       { id: 1, name: 'Sentido Arácnido' },
-      { id: 2, name: 'Telaraña' },
+      { id: 2, name: 'Choque Electrico' },
+      { id: 3, name: '¡Toque de hombro... Hey!'}
     ],
-      peter: []
+      peter: [ 
+      { id: 1, name: 'Sentido Arácnido Veterano' },
+      { id: 2, name: 'Telaraña' },
+    ]
   };
   
   getTechniquesByHeroKey(heroKey: HeroKey): Technique[] 

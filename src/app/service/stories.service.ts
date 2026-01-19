@@ -79,7 +79,6 @@ dante: {
     'Dante es un cazador de demonios mitad humano y mitad demonio, heredero del poder del legendario Sparda y de la humanidad de su madre Eva.',
     'Su destino, marcado por la perdida de su madre a manos de un Demonio, lo empujo a abrir y administrar su negocio anti-demonios, Devil May Cry.'
   ],
-
   sections: [
     { title: 'Origen', content: 'Nació y creció en una mansión aislada ubicada en las afueras de Red Grave City' },
     { title: 'Motivación', content: 'Venganza y Trauma Familiar.'},
@@ -94,7 +93,7 @@ dante: {
     paragraphs: [
       'En Spider-Man: Into the Spider-Verse, Peter B. es un Peter Parker veterano, con alrededor de 38 años.',
       'Peter Benjamin Parker no es el Spider-Man “ideal” del canon clásico, sino una variación envejecida, desgastada, que ya vivió lo que otros Spider-Man recién están empezando a atravesar.',
-      'Este Peter nos en enseña el resultado del abandono arbitrario o deliberado de su alter ego, Peter Parker.',
+      'Este Spider Man nos en enseña el resultado del abandono, arbitrario o deliberado, de su alter ego principal Peter Parker.',
       'En algún momneto, este Peter decidio que su "deber" como Spider-Man pesaba más que su vida personal, lo que lo desencadeno en cuestiones como su divorcio con MJ y demas cuestiones de su vida privada.',
       'Sin embargo, tras atravesar su momento canónico, al ser teletransportado a la Tierra 42 y conocer a Miles Morales, Peter B. se ve confrontado con un punto de inflexión. El encuentro con Miles no le devuelve simplemente un propósito heroico, sino que reactiva en él un deseo largamente reprimido, su anhelo por convertirse en Padre y estar a la altura.'
     ],
