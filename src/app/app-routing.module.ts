@@ -3,14 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { StoriesComponent } from './stories/stories.component';
-
+import { BeginComponent } from './begin/begin.component';
+import { StartComponent } from './start/start.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },          // <-- TU LANDING
-  { path: 'heroes', component: HeroesComponent },  // <-- LISTA / SELECCIÓN
-  { path: 'powers', component: StoriesComponent},
+  { path: '', pathMatch: 'full', redirectTo: 'start' },
+  { path: 'start', component: StartComponent},
+  { path: 'begin', component: BeginComponent },        
+  { path: 'home', component: HomeComponent },           
+  { path: 'heroes', component: HeroesComponent },
+  { path: 'powers', component: StoriesComponent },
   { path: 'heroes/:heroKey/powers', component: StoriesComponent },
-  { path: '**', redirectTo: '' }
+
+  { path: '**', redirectTo: 'start' }
 ];
 
 @NgModule({
