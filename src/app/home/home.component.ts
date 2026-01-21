@@ -4,8 +4,7 @@ import { Hero } from '../models/heroes';
 import { HeroesList } from '../service/hero.service';
 import { HeroSearchService } from '../service/heroeSearch.service';
 import { VideoService, VideoFragment } from '../service/video'; 
-import { VideoPreloadService } from '../service/videoPreload.service'; 
-import { Subscription } from 'rxjs';
+import { VideoPreloadService } from '../service/videoPreload.service';
 
 @Component({
   selector: 'app-home',
@@ -23,15 +22,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   autocompleteList: Hero[] = [];
   showAutocompleteList = false;
 
-  
   private readonly VIDEO_URL = 'assets/video/A leap of Faith.mp4';
-
-  
   private readonly fragments: VideoFragment[] = [
     { start: 82, end: 120 } 
   ];
-
-  private preloadSub?: Subscription;
 
   constructor(
     private router: Router,
@@ -40,48 +34,78 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     private videoService: VideoService,
     private videoPreloadService: VideoPreloadService
   ) {}
-
+  
+  private homeVideoLoopOn = false;
+  
   ngOnInit(): void {
+    console.log('🏠 HOME: Inicializando componente');
+    
     this.heroes = this.heroService.getHeroes();
-    this.preloadSub = this.videoPreloadService.preload(this.VIDEO_URL).subscribe();
+    
+    // Verificar estado del video
+    if (this.videoPreloadService.isPreloaded(this.VIDEO_URL)) {
+      console.log('✅ Video de /home ya estaba precargado desde /start');
+    } else {
+      console.log('⚠️ Video NO precargado, se cargará normalmente');
+    }
   }
 
   ngAfterViewInit(): void {
-    const video = this.bgVideo.nativeElement;
+      console.log('🏠 HOME: Configurando video...');
+      
+      const video = this.bgVideo.nativeElement;
 
-    // config segura para autoplay background
-    video.muted = true;
-    video.loop = false;             
-    video.playsInline = true;
-    video.preload = 'auto';
+      video.muted = true;
+      video.loop = false;
+      video.playsInline = true;
+      video.preload = 'auto';
 
-    const preloaded = this.videoPreloadService.getPreloadedVideo(this.VIDEO_URL);
+      const preloaded = this.videoPreloadService.getPreloadedVideo(this.VIDEO_URL);
 
-    if (preloaded) {
+      if (preloaded) {
+        console.log('🚀 Usando video precargado (carga instantánea)');
+        video.src = preloaded.src;
+      } else {
+        console.log('📥 Cargando video normalmente');
+        video.src = this.VIDEO_URL;
+      }
 
-      video.src = preloaded.currentSrc || this.VIDEO_URL;
-    } else {
-      video.src = this.VIDEO_URL;
+      video.load();
+      this.videoService.init(video);
+
+      const startPlayback = () => {
+        console.log('▶️ Reproduciendo video de fondo en /home');
+
+        this.homeVideoLoopOn = true;
+
+        const loopOnce = () => {
+          if (!this.homeVideoLoopOn) return;
+
+          this.videoService.playFragments(this.fragments, () => {
+            // cuando termina, repite si seguimos en Home
+            loopOnce();
+          });
+        };
+
+        loopOnce();
+      };
+
+      if (video.readyState >= 3) {
+        startPlayback();
+      } else {
+        video.addEventListener('canplay', startPlayback, { once: true });
+      }
     }
 
-    video.load();
+    ngOnDestroy(): void {
+      console.log('🏠 HOME: Destruyendo componente');
 
-    this.videoService.init(video);
+      // 🔒 corta el loop antes de destruir
+      this.homeVideoLoopOn = false;
 
-    const start = () => {
-      this.videoService.playFragments(this.fragments, () => {
-        this.videoService.playFragments(this.fragments, () => {});
-      });
-    };
-
-    if (video.readyState >= 3) start();
-    else video.addEventListener('canplay', start, { once: true });
-  }
-
-  ngOnDestroy(): void {
-    this.preloadSub?.unsubscribe();
-    this.videoService.destroy();
-  }
+      this.videoService.destroy();
+      this.videoPreloadService.clear(this.VIDEO_URL);
+    }
 
   toggleSearch(): void {
     this.showSearch = !this.showSearch;

@@ -1,23 +1,157 @@
-{"archivo": "reportes.json"}
-
 {
-  "estado": 1,
-  "descripcion": "Angular is running in development mode.",
-  "vista": "/start"
-}
-
-{
-  "estado": 2,
-  "descripcion": "✓ Audio desbloqueado desde /start
-          begin.component.ts:41 ⚠️ Video NO estaba precargado, cargando ahora...
-          begin.component.ts:62 ⏳ Cargando video normalmente...",
-  "vista": "/begin"
-}
-
-{
-  "estado": 3,
-  "descripcion": "Metadata cargada
-          begin.component.ts:89 Video listo
-          begin.component.ts:104 ▶️ Video reproduciendo con audio",
-"vista": "/begin"
+  "version": "2.0",
+  "last_update": "2026-01-21",
+  "estados": [
+    {
+      "estado": 1,
+      "nombre": "Inicialización del Proyecto",
+      "vista": "/start",
+      "descripcion": "Angular is running in development mode.",
+      "acciones": [
+        "App inicializada",
+        "Usuario en pantalla de inicio",
+        "Esperando interacción"
+      ],
+      "logs_esperados": [
+        "Angular is running in development mode."
+      ]
+    },
+    {
+      "estado": 2,
+      "nombre": "Precarga Iniciada desde /start",
+      "vista": "/start",
+      "descripcion": "El usuario está en /start y el sistema comienza a precargar recursos",
+      "acciones": [
+        "🎬 Iniciando precarga de videos en background",
+        "📹 Precarga assets/video/A leap of Faith.mp4: X%",
+        "✅ Video precargado (cuando llega a 100%)"
+      ],
+      "logs_esperados": [
+        "🎬 Iniciando precarga de videos en background...",
+        "📹 Precarga assets/video/A leap of Faith.mp4: 10%",
+        "📹 Precarga assets/video/A leap of Faith.mp4: 25%",
+        "📹 Precarga assets/video/A leap of Faith.mp4: 50%",
+        "📹 Precarga assets/video/A leap of Faith.mp4: 75%",
+        "📹 Precarga assets/video/A leap of Faith.mp4: 100%",
+        "✅ Video precargado: assets/video/A leap of Faith.mp4"
+      ],
+      "notas": "Este estado ocurre en paralelo mientras el usuario ve la pantalla /start"
+    },
+    {
+      "estado": 3,
+      "nombre": "Audio Desbloqueado + Navegación a /begin",
+      "vista": "/start → /begin",
+      "descripcion": "Usuario hace click en 'Start', se desbloquea el audio y navega",
+      "acciones": [
+        "✓ Audio desbloqueado desde /start",
+        "Navegación a /begin"
+      ],
+      "logs_esperados": [
+        "✓ Audio desbloqueado desde /start"
+      ]
+    },
+    {
+      "estado": 4,
+      "nombre": "Carga del Video en /begin",
+      "vista": "/begin",
+      "descripcion": "Componente /begin verifica si el video está precargado",
+      "acciones": [
+        "Verificar si video está precargado",
+        "Cargar metadata",
+        "Preparar reproducción"
+      ],
+      "logs_esperados": [
+        "✅ Video ya precargado desde /start",
+        "🚀 Usando video precargado (carga instantánea)",
+        "Metadata cargada",
+        "Video listo"
+      ],
+      "logs_fallback": [
+        "⚠️ Video NO estaba precargado, cargando ahora...",
+        "⏳ Cargando video normalmente..."
+      ]
+    },
+    {
+      "estado": 5,
+      "nombre": "Reproducción en /begin",
+      "vista": "/begin",
+      "descripcion": "Video reproduciéndose (fragmento 35-82s)",
+      "acciones": [
+        "▶️ Video reproduciendo con audio",
+        "Fragmento 35-82 segundos"
+      ],
+      "logs_esperados": [
+        "▶️ Video reproduciendo con audio"
+      ]
+    },
+    {
+      "estado": 6,
+      "nombre": "Transición a /home",
+      "vista": "/begin → /home",
+      "descripcion": "Video de /begin terminó, navegando a /home",
+      "acciones": [
+        "Video completado",
+        "Limpieza de recursos de /begin",
+        "Navegación a /home"
+      ],
+      "logs_esperados": [
+        "Video completado",
+        "Navegando a /home"
+      ]
+    },
+    {
+      "estado": 7,
+      "nombre": "Inicialización de /home",
+      "vista": "/home",
+      "descripcion": "Componente /home detecta que el video YA está precargado",
+      "acciones": [
+        "🏠 HOME: Inicializando componente",
+        "✅ Video de /home ya estaba precargado desde /start",
+        "🏠 HOME: Configurando video...",
+        "🚀 Usando video precargado (carga instantánea)"
+      ],
+      "logs_esperados": [
+        "🏠 HOME: Inicializando componente",
+        "✅ Video de /home ya estaba precargado desde /start",
+        "🏠 HOME: Configurando video...",
+        "🚀 Usando video precargado (carga instantánea)",
+        "▶️ Reproduciendo video de fondo en /home"
+      ],
+      "logs_fallback": [
+        "⚠️ Video NO precargado, iniciando carga de emergencia...",
+        "📥 Cargando video normalmente"
+      ],
+      "notas": "En el flujo óptimo, el video ya está 100% cargado aquí"
+    },
+    {
+      "estado": 8,
+      "nombre": "Sistema Operativo en /home",
+      "vista": "/home",
+      "descripcion": "Usuario puede navegar, buscar héroes, interactuar",
+      "acciones": [
+        "Video de fondo reproduciéndose (82-120s en loop)",
+        "Búsqueda de héroes activa",
+        "Navegación disponible"
+      ],
+      "logs_esperados": [
+        "▶️ Reproduciendo video de fondo en /home"
+      ]
+    }
+  ],
+  "flujo_ideal": [
+    "Estado 1: /start carga",
+    "Estado 2: Precarga inicia EN PARALELO",
+    "Estado 3: Usuario hace click → audio OK",
+    "Estado 4: /begin carga INSTANTÁNEO (video precargado)",
+    "Estado 5: Video reproduce",
+    "Estado 6: Transición a /home",
+    "Estado 7: /home usa video PRECARGADO",
+    "Estado 8: Sistema operativo"
+  ],
+  "mejoras_implementadas": [
+    "✅ Precarga inicia en /start (no en /home)",
+    "✅ Video de /home está listo ANTES de llegar ahí",
+    "✅ Logs claros para debugging",
+    "✅ Fallback si algo falla"
+  ]
 }

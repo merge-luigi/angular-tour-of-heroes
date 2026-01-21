@@ -5,6 +5,7 @@ import { AudioService } from '../service/audio';
 import { VideoService, VideoFragment } from '../service/video'; 
 import { VideoPreloadService } from '../service/videoPreload.service'; 
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-begin',
   standalone: true,
@@ -33,7 +34,7 @@ export class BeginComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.audioService.pause();
+    /*this.audioService.pause();*/
     
     if (this.videoPreloadService.isPreloaded(this.VIDEO_URL)) {
       console.log('✅ Video ya precargado desde /start');
@@ -118,12 +119,15 @@ export class BeginComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    console.log('🔴 BEGIN: Destruyendo componente');
     this.videoService.destroy();
   }
 
   private onVideoComplete(): void {
+    console.log('✅ BEGIN: Video completado, navegando a /home');
     
-    this.videoPreloadService.clear(this.VIDEO_URL);
+    // ⚠️ NO llamamos a clear() porque /home necesita el video precargado
+    // El video permanece en memoria para ser usado por /home
     
     this.router.navigateByUrl('/home');
   }
