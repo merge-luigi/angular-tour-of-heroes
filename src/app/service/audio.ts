@@ -1,54 +1,47 @@
+// audio.service.ts (o donde tengas tu AudioService)
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AudioService {
-  private audio: HTMLAudioElement | null = null;
+  
+  private audio: HTMLAudioElement;
   private isPlaying = false;
 
   constructor() {
-    // Crear el elemento de audio
-    this.audio = new Audio();
-    this.audio.src = 'assets/audio/intro-loop2.wav';
-    this.audio.loop = true;
-    this.audio.volume = 0.7; // Volumen al 70%
+    // Inicializar el audio con tu archivo de música
+    this.audio = new Audio('assets/audio/intro-loop.wav'); // 👈 Ajustá la ruta
+    this.audio.loop = true; // Para que se repita
+    this.audio.volume = 0.5; // Volumen al 50%
   }
 
+  // Método para reproducir
   play(): Promise<void> {
-    if (this.audio && !this.isPlaying) {
-      this.isPlaying = true;
-      return this.audio.play().catch(err => {
-        console.error('Error al reproducir audio:', err);
-        this.isPlaying = false;
-        throw err;
-      });
-    }
-    return Promise.resolve();
+    this.isPlaying = true;
+    return this.audio.play();
   }
 
+  // 👇 AGREGAR ESTE MÉTODO
   pause(): void {
-    if (this.audio && this.isPlaying) {
-      this.audio.pause();
-      this.isPlaying = false;
-    }
+    this.audio.pause();
+    this.isPlaying = false;
   }
 
+  // 👇 AGREGAR ESTE MÉTODO (opcional, por si querés detener completamente)
   stop(): void {
-    if (this.audio) {
-      this.audio.pause();
-      this.audio.currentTime = 0;
-      this.isPlaying = false;
-    }
+    this.audio.pause();
+    this.audio.currentTime = 0; // Volver al inicio
+    this.isPlaying = false;
   }
 
-  setVolume(volume: number): void {
-    if (this.audio) {
-      this.audio.volume = Math.max(0, Math.min(1, volume));
-    }
-  }
-
+  // Método que ya tenías
   getIsPlaying(): boolean {
     return this.isPlaying;
+  }
+
+  // 👇 MÉTODO EXTRA (opcional, para controlar volumen)
+  setVolume(volume: number): void {
+    this.audio.volume = Math.max(0, Math.min(1, volume)); // Entre 0 y 1
   }
 }

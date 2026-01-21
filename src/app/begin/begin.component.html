@@ -1,2 +1,34 @@
-<p>Begin</p>
-<button (click)="start()">Start</button>
+<!-- begin.component.html -->
+<div class="video-container">
+
+  <!-- Loading layer (mientras prepara metadata/seek) -->
+  <div class="loading-layer" [class.hide]="videoReady">
+    <img class="loading-image" src="assets/free-fall.png" alt="Loading frame" />
+
+    <div class="loading-ui">
+      <div class="loading-title">CARGANDO…</div>
+      <div class="loading-sub">Preparando el salto</div>
+    </div>
+  </div>
+
+  <!-- Video player -->
+  <video #videoPlayer
+         class="fullscreen-video"
+         [class.show]="videoReady"
+         src="assets/video/A leap of Faith.mp4"
+         preload="auto"
+         playsinline>
+    Tu navegador no soporta el elemento video.
+  </video>
+
+  <!-- Botón Skip (aparece después de 3 segundos) -->
+  <button class="skip-btn" *ngIf="videoReady" (click)="skipIntro()">
+    Skip intro →
+  </button>
+
+  <!-- Opcional: Indicador de que la música está sonando -->
+  <div class="music-indicator" *ngIf="isMusicPlaying && videoReady">
+    ♪ Music playing
+  </div>
+
+</div>

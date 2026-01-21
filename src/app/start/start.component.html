@@ -1,2 +1,23 @@
-<p> press space to continue...</p>
-<button (click)="start()">Start</button>
+<div class="start-container">
+
+  <!-- Imagen de fondo -->
+  <img
+    src="assets/free-fall.png"
+    class="start-image"
+    alt="Miles before the leap"
+  />
+
+  <!-- Capa UI -->
+  <div class="ui-layer">
+
+    <div class="prompt">
+      ¿Estás a punto de dar un salto de fe?
+    </div>
+
+    <button class="continue-btn" (click)="start()">
+      CONTINUAR
+    </button>
+
+  </div>
+
+</div>

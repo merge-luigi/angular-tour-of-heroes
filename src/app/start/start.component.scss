@@ -1,0 +1,90 @@
+:host {
+  display: block;
+  height: 100vh;
+  background: black;
+}
+
+/* Contenedor general */
+.start-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Imagen */
+.start-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  /* elimina el “borde negro grande” */
+  object-position: center;
+
+  /* leve tratamiento cinematográfico */
+  filter: contrast(1.05) saturate(1.15);
+}
+
+/* Capa UI */
+.ui-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 28px;
+
+  padding-bottom: 80px;
+  z-index: 2;
+
+  /* gradiente suave para legibilidad */
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.0) 55%
+  );
+}
+
+/* Texto */
+.prompt {
+  color: #eaeaea;
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Orbitron', 'Montserrat', sans-serif;
+  opacity: 0.9;
+}
+
+/* Botón */
+.continue-btn {
+  padding: 16px 42px;
+  font-size: 18px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+
+  font-family: 'Orbitron', 'Montserrat', sans-serif;
+
+  background: transparent;
+  color: #ffffff;
+
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 2px;
+
+  cursor: pointer;
+  position: relative;
+
+  transition: all 0.25s ease;
+}
+
+/* Hover futurista */
+.continue-btn:hover {
+  background: rgba(255, 0, 80, 0.15);
+  border-color: #ff0055;
+  box-shadow:
+    0 0 12px rgba(255, 0, 85, 0.6),
+    0 0 24px rgba(255, 0, 85, 0.4);
+}

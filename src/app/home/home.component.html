@@ -11,7 +11,21 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
   <section class="hero">
+
+    <!-- BACKGROUND -->
+    <div class="hero-bg" aria-hidden="true">
+      <video
+        #bgVideo
+        class="bg-video"
+        playsinline
+        muted
+        preload="auto"
+      ></video>
+    </div>
+
+    <!-- TEXTO -->
     <div class="hero-text">
       <h1>Into the Heroes-Verse</h1>
       <p>Selecciona a tu héroe más icónico</p>
@@ -43,23 +57,28 @@
           ></ion-input>
 
           <ul class="autocompleteList" *ngIf="showAutocompleteList">
-            <li *ngFor="let hero of autocompleteList" (click)="selectHero(hero)">
+            <li
+              *ngFor="let hero of autocompleteList"
+              (click)="selectHero(hero)"
+            >
               {{ hero.name }}
             </li>
           </ul>
         </div>
 
-        <ion-button class="btn-search" (click)="goHero()">
-          Ir
-        </ion-button>
+        <ion-button class="btn-search" (click)="goHero()">Ir</ion-button>
       </div>
     </div>
 
+    <!-- IMAGEN -->
     <div class="hero-image">
       <img
         src="assets/07c19cb172e43104f3671a6c1e3af3ee.jpg"
         alt="Hero image"
       />
     </div>
+
   </section>
+  <!-- 👆 Y ACA CIERRA -->
+
 </ion-content>

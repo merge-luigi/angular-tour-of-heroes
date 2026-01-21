@@ -1,7 +1,7 @@
                      
             ╔═══════════════════════════════════════════════════════════════════════╗
             ║                                                                       ║
-            ║           GUÍA BÁSICA DE GIT - COMANDOS ESENCIALES                    ║
+            ║           GUÍA BÁSICA DE GIT - COMANDOS ESENCIALES                   ║
             ║                                                                       ║
             ╚═══════════════════════════════════════════════════════════════════════╝
 
@@ -12,14 +12,16 @@ Primero, para eliminar esas horribles líneas que aparecen en los banners debes 
     2. Pegar en el buscador ------> unicodeHighlight
     3. Cambia el valor del dropdown de "inUntrustedWorkspace" a false (o desmarca la casilla si la tiene)
 
-Para levantar las terminales, recomendado hacer:
+Para levantar las terminales, recomendado hacer (ANGULAR):
 ng serve --host 0.0.0.0 --port 4200 --poll 700 # el pool obliga a Angular a revisar cambios cada 7seg (ajustar según tu potencia de cpu)
 
 Para crear Componentes:
 ng generate component nombre-del-componente  -------> Crea Componentes enteros (.html, .ts, .css, .spec.ts)
 ng g c nombre-del-componente  -------> Forma abreviada de crear 1 componente
 
-
+Para crear Servicios:
+ng generate service nombre-del-service -------> crear Servicios
+ng g s nombre-del-servicio -------> Forma abreviada de crear 1 servicio
 ═══════════════════════════════════════════════════════════════════════
 📊 GIT ESTADOS
 ═══════════════════════════════════════════════════════════════════════
