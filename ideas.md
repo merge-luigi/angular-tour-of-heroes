@@ -28,36 +28,6 @@
 - Punto 0 y sin retorno a /begin ni /start.
 - Salvo "posible reinicio"?
 
-═══════════════════════════════════════════════════════════════════════
-                        INFRAESTRUCTURA -11:44-
-═══════════════════════════════════════════════════════════════════════
-
-
-src/
-├── app/
-│   ├── start/              # 👈 NUEVO componente
-│   │   ├── start.component.ts
-│   │   ├── start.component.html
-│   │   ├── start.component.css
-│   │   └── start.component.spec.ts
-│   │
-│   ├── begin/              # 👈 YA EXISTE (lo veo en tu explorer)
-│   │   ├── begin.component.ts
-│   │   ├── begin.component.html
-│   │   ├── begin.component.css
-│   │   └── begin.component.spec.ts
-│   │
-│   ├── home/               # 👈 YA EXISTE
-│   │   └── ...
-│   │
-│   └── app-routing.module.ts  # 👈 Configurar rutas
-│
-└── assets/
-    ├── video/
-    │   └── A leap of Faith.mp4  # ✅ Ya lo tenés
-    └── images/                   # 👈 NUEVO para la imagen de NYC
-        └── nyc-static.jpg        # Imagen estática para /start
-
 posible reinicio
 
 // En home.component.ts
@@ -69,7 +39,7 @@ resetApp() {
   this.router.navigate(['/start']);
 }
 
-
+Luego de salir de /begin
 
 
 

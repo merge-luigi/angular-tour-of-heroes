@@ -1,0 +1,23 @@
+{"archivo": "reportes.json"}
+
+{
+  "estado": 1,
+  "descripcion": "Angular is running in development mode.",
+  "vista": "/start"
+}
+
+{
+  "estado": 2,
+  "descripcion": "✓ Audio desbloqueado desde /start
+          begin.component.ts:41 ⚠️ Video NO estaba precargado, cargando ahora...
+          begin.component.ts:62 ⏳ Cargando video normalmente...",
+  "vista": "/begin"
+}
+
+{
+  "estado": 3,
+  "descripcion": "Metadata cargada
+          begin.component.ts:89 Video listo
+          begin.component.ts:104 ▶️ Video reproduciendo con audio",
+"vista": "/begin"
+}

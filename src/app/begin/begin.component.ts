@@ -4,9 +4,11 @@ import { Router } from '@angular/router';
 import { AudioService } from '../service/audio';
 import { VideoService, VideoFragment } from '../service/video'; 
 import { VideoPreloadService } from '../service/videoPreload.service'; 
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-begin',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './begin.component.html',
   styleUrls: ['./begin.component.scss']
 })

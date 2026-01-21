@@ -154,9 +154,11 @@ git blame archivo.txt # Ver quién modificó cada línea
 git log --graph --pretty=format:"%C(red)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset"
 
 ═══════════════════════════════════════════════════════════════════════
-🔥 HECHIZOS PROHIBIDOS  - Usar con precaución
+🔥 HECHIZOS PROHIBIDOS - Usar con precaución
 ═══════════════════════════════════════════════════════════════════════
 git reset --hard             # BORRA todos los cambios locales
 git clean -fd                # ELIMINA archivos no trackeados
 git push --force             # Reescribe historial remoto
 git rebase                   # Reescribe historial local
+
+
