@@ -1,7 +1,7 @@
                      
             ╔═══════════════════════════════════════════════════════════════════════╗
             ║                                                                       ║
-            ║           GUÍA BÁSICA DE GIT - COMANDOS ESENCIALES                   ║
+            ║                GUÍA BÁSICA DE GIT - COMANDOS ESENCIALES               ║
             ║                                                                       ║
             ╚═══════════════════════════════════════════════════════════════════════╝
 
@@ -22,6 +22,45 @@ ng g c nombre-del-componente  -------> Forma abreviada de crear 1 componente
 Para crear Servicios:
 ng generate service nombre-del-service -------> crear Servicios
 ng g s nombre-del-servicio -------> Forma abreviada de crear 1 servicio
+
+Un “branch swap” (intercambio de ramas) con backup explícito:
+"En el siguiente caso de ejemplo, se requería mergear a main todo lo trabajado en la rama "fork-threshold-tour-of-heroes",
+    para posteriormente convertir a esta en el nuevo main"
+
+# Para conseguir esto, se pueden realizar los siguientes casos:
+# 1. Ir a tu rama actual
+git checkout fork-threshold-tour-of-heroes
+
+# 2. Renombrar main → main-old (preservar historia)
+git branch -m main main-old
+
+# 3. Renombrar tu rama actual → main
+git branch -m fork-threshold-tour-of-heroes main
+
+# 4. Subir la nueva main
+git push -f origin main
+
+# 5. Subir main-old como backup en el remoto
+git push origin main-old
+```
+---
+## **📂 Estado Final de tus Ramas:**
+
+**Local:**
+```
+✅ main                ---------------->                # (tu proyecto actual)
+📦 main-old            ---------------->                # (snapshot del proyecto hace 5 días)
+🕷️ feat/spider-man-peter-parker-multiverse
+🚨 rescue-day
+```
+
+**Remoto (GitHub):**
+```
+✅ main                ---------------->                 # (actualizado)
+📦 main-old            ---------------->                 # (respaldo histórico)
+🕷️ feat/spider-man-peter-parker-multiverse
+🚨 rescue-day
+
 ═══════════════════════════════════════════════════════════════════════
 📊 GIT ESTADOS
 ═══════════════════════════════════════════════════════════════════════
