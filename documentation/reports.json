@@ -1,0 +1,65 @@
+{
+  "project": "Tour of Heroes",
+  "events": [
+    {
+      "event": "fork",
+      "branch": "fork-threshold-tour-of-heroes",
+      "date": "2026-01-19",
+      "note": "From this point forward, the project follows an autonomous personal direction."
+    },
+    {
+      "event": "fork",
+      "branch": "fork-threshold-tour-of-heroes",
+      "date": "2026-01-20",
+      "note": "Para el día de la fecha se han añadido múltiples configuraciones.",
+      "changes": [
+        "videoService para manejar todos los archivos audiovisuales de manera global entre componentes",
+        "videoPreloadService para manejar las precargas de los vídeos entre componentes por medio de un observable",
+        "se terminó de configurar /start y /begin",
+        "la pantalla /home quedó deprecada",
+        "se comenzó a recrear /home (faltan mejoras)"
+      ],
+      "implementation": {
+        "start": [
+          "User-gesture media unlock para permitir reproducción con audio en la siguiente ruta",
+          "Asset preloading en paralelo para reducir el tiempo de arranque"
+        ]
+      },
+      "gitStatus": {
+        "capturedAt": "2026-01-20T22:23:00-03:00",
+        "modified": [
+          "README.md",
+          "documentation/fork.json",
+          "git tips.md",
+          "src/app/app.component.html",
+          "src/app/begin/begin.component.html",
+          "src/app/begin/begin.component.scss",
+          "src/app/begin/begin.component.spec.ts",
+          "src/app/begin/begin.component.ts",
+          "src/app/home/home.component.css",
+          "src/app/home/home.component.html",
+          "src/app/home/home.component.ts",
+          "src/app/service/audio.ts",
+          "src/app/start/start.component.html",
+          "src/app/start/start.component.scss",
+          "src/app/start/start.component.ts"
+        ],
+        "untracked": [
+          ".vscode/settings.json",
+          "ideas.md",
+          "src/app/service/video.spec.ts",
+          "src/app/service/video.ts",
+          "src/app/service/videoPreload.service.ts",
+          "src/assets/free-fall.png",
+          "src/assets/video/"
+        ]
+      }
+    },
+    {
+      "event": "feat!",
+      "branch": "fork-threshold-tour-of-heroes → main",
+      "date": "2026-01-21",
+      "note": "Rebrand app from Tour of Heroes to Un Salto de Fe"
+    }
+  ]
+}

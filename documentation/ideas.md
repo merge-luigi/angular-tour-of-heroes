@@ -28,18 +28,7 @@
 - Punto 0 y sin retorno a /begin ni /start.
 - Salvo "posible reinicio"?
 
-posible reinicio
-
-// En home.component.ts
-resetApp() {
-  // Opcional: limpiar localStorage si guardás algo
-  localStorage.removeItem('introSeen');
-  
-  // Volver al inicio
-  this.router.navigate(['/start']);
-}
-
-Luego de salir de /begin
+posibukudad de uso de Blob's para agilizar las cargas de los vídeos
 
 
 
