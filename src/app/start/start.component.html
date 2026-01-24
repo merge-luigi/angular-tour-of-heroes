@@ -1,3 +1,4 @@
+<!-- start.component.html -->
 <div class="start-container">
 
   <!-- Imagen de fondo -->
@@ -11,11 +12,25 @@
   <div class="ui-layer">
 
     <div class="prompt">
-      ¿Estás a punto de dar un salto de fe?
+      Estás a punto de dar un salto de fe
+      ¿seguro que deseas continuar?
     </div>
 
-    <button class="continue-btn" (click)="start()">
-      CONTINUAR
+    <!-- 👇 Mostrar progreso mientras carga -->
+    <div class="loading-indicator" *ngIf="!homeVideoLoaded">
+      <div class="loading-bar">
+        <div class="loading-fill" [style.width.%]="loadingProgress"></div>
+      </div>
+      <p class="loading-text">Preparando experiencia... {{loadingProgress}}%</p>
+    </div>
+
+    <!-- 👇 Botón se habilita cuando está listo -->
+    <button 
+      class="continue-btn" 
+      (click)="start()"
+      [disabled]="!homeVideoLoaded"
+      [class.ready]="homeVideoLoaded">
+      {{ homeVideoLoaded ? 'CONTINUAR' : 'CARGANDO...' }}
     </button>
 
   </div>
