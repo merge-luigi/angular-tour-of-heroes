@@ -1,3 +1,4 @@
+//home.component.ts
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Hero } from '../models/heroes';
@@ -5,7 +6,7 @@ import { HeroesList } from '../service/hero.service';
 import { HeroSearchService } from '../service/heroeSearch.service';
 import { VideoService, VideoFragment } from '../service/video'; 
 import { VideoPreloadService } from '../service/videoPreload.service';
-
+import { AudioService } from '../service/audio';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -32,16 +33,32 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     private heroService: HeroesList,
     private heroSearch: HeroSearchService,
     private videoService: VideoService,
-    private videoPreloadService: VideoPreloadService
+    private videoPreloadService: VideoPreloadService,
+    private audioService: AudioService,
   ) {}
   
   private homeVideoLoopOn = false;
   
   ngOnInit(): void {
     console.log('🏠 HOME: Inicializando componente');
-    
+    if (sessionStorage.getItem('audioUnlocked') === 'true') {
+
+    // Registrar si no estaba registrado
+    this.audioService.register('inDaClub', {
+      src: 'assets/audio/In Da Club Forever.mp3',
+      loop: true,
+      volume: 0.7,
+      preload: 'auto'
+    });
+
+    // 👉 ACÁ y SOLO ACÁ empieza la música
+    this.audioService.play('inDaClub').catch(() => {});
+  }
     this.heroes = this.heroService.getHeroes();
-    
+    if (sessionStorage.getItem('audioUnlocked') === 'true') {
+      this.audioService.setVolume('inDaClub', 0.4);
+      this.audioService.play('inDaClub').catch(() => {});
+    }
     // Verificar estado del video
     if (this.videoPreloadService.isPreloaded(this.VIDEO_URL)) {
       console.log('✅ Video de /home ya estaba precargado desde /start');
@@ -73,18 +90,27 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       video.load();
       this.videoService.init(video);
 
-      const startPlayback = () => {
-        console.log('▶️ Reproduciendo video de fondo en /home');
+  const startPlayback = async () => 
+    {
+      console.log('▶️ Reproduciendo video de fondo en /home');
+
+        try {
+          await video.play();
+        } catch (e) {
+          console.warn('Autoplay bloqueado o ahorro de energía, esperando interacción...', e);
+          const unlock = async () => {
+            document.removeEventListener('click', unlock);
+            try { await video.play(); } catch {}
+          };
+          document.addEventListener('click', unlock, { once: true });
+          return;
+        }
 
         this.homeVideoLoopOn = true;
 
         const loopOnce = () => {
           if (!this.homeVideoLoopOn) return;
-
-          this.videoService.playFragments(this.fragments, () => {
-            // cuando termina, repite si seguimos en Home
-            loopOnce();
-          });
+          this.videoService.playFragments(this.fragments, () => loopOnce());
         };
 
         loopOnce();

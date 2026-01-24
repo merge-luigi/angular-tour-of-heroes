@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HomeComponent } from './home/home.component';
 import { StoriesComponent } from './stories/stories.component';
+import { StartComponent } from './start/start.component'; 
+import { BeginComponent } from './begin/begin.component'; 
 
 import { IonicModule } from '@ionic/angular';
 import { ImageExpandComponent } from './imageExpand/imageExpand.component';
@@ -20,7 +22,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     HeroesComponent,
     HomeComponent,
     StoriesComponent,
-    ImageExpandComponent
+    ImageExpandComponent,
+    StartComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     FormsModule,
     IonicModule.forRoot({}),
     AppRoutingModule,
+    BeginComponent,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
