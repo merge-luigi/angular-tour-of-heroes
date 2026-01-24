@@ -49,7 +49,8 @@ proyecto-angular/
 │   ├── 📂 assets/
 │   │   │
 │   │   ├── 📂 audio/                    [Archivos de sonido]
-│   │   │   └── (pendiente)
+│   │   │   └── In Da Club Forever.mp3
+|   |   |   └── intro-loop2.mp3
 │   │   │
 │   │   ├── 📂 images/                   [Imágenes estáticas]
 │   │   │   └── nyc-static.jpg
